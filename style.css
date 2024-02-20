@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav img {
+    width: 50px;
+}
+
+.navbar-dark,
+.bg-dark {
+    background-color: #1A1A1A !important;
+}
+
+.hero {
+    background-image: url(assets/e-commerce-bg.jpeg);
+}
