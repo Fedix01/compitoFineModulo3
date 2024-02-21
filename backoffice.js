@@ -73,6 +73,7 @@ function createTable({ name, description, brand, imageUrl, price }) {
     rowName.innerText = name;
     let rowDesc = document.createElement("td");
     rowDesc.innerText = description;
+    rowDesc.style.maxWidth = "500px";
     let rowBrand = document.createElement("td");
     rowBrand.innerText = brand;
     let rowImg = document.createElement("td");
@@ -81,7 +82,7 @@ function createTable({ name, description, brand, imageUrl, price }) {
     img.style.width = "40px";
     rowImg.appendChild(img);
     let rowPrice = document.createElement("td");
-    rowPrice.innerText = `${price}$`;
+    rowPrice.innerText = `$${price}`;
 
     let rowBtns = document.createElement("td");
     // Edit(modify) button

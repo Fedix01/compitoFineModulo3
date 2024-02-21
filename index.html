@@ -15,8 +15,8 @@
     <!-- Navbar Section -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <img src="assets/marketplace.png" alt="">
-            <a class="navbar-brand" href="#">myMarket</a>
+            <img src="assets/marketplace.png" class="home" alt="">
+            <a class="navbar-brand home" href="#">myMarket</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active home" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" id="backOffice" href="#">Backoffice</a>
@@ -48,26 +48,43 @@
 
 
     <!-- Hero Section -->
-    <div class="px-4 py-5 my-5 text-center hero">
-        <h1 class="display-5 fw-bold">Centered hero</h1>
-        <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s
-                most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system,
-                extensive prebuilt components, and powerful JavaScript plugins.</p>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
-                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
+    <div class="hero">
+        <div class="container col-xxl-8 px-4 py-5">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                <div class="col-10 col-sm-8 col-lg-6">
+                    <img src="assets/hero-background.jpeg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes"
+                        width="700" height="500" loading="lazy">
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="display-5 fw-bold lh-1 mb-3">All your favourite brands in one place</h1>
+                    <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the
+                        world’s
+                        most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid
+                        system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <input class="form-control" type="text" id="search-input" placeholder="Insert a product name..."
+                            aria-label="default input example">
+                        <button type="button" class="btn btn-outline-secondary btn-lg px-4"
+                            id="search-btn">Search</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                Searched products
+            <div class="col-md-12 mt-4" id="all-prod">
+                <h2>All Products</h2>
+            </div>
+            <div class="col-md-12 d-none mt-4" id="searched-text">
+                <h2>Searched products</h2>
             </div>
         </div>
-        <div class="row" id="searched-prod"></div>
+        <div class="spinner-border d-none" id="spinner" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="row align-items-baseline" id="searched-prod"></div>
     </div>
     <script src="https://kit.fontawesome.com/e5a2b2fa25.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

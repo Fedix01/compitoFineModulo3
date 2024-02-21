@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav img {
+    width: 50px;
+}
+
+.navbar-dark,
+.bg-dark {
+    background-color: #1A1A1A !important;
+}
+
+
+.prod-name {
+    font-size: 40px;
+    font-weight: 800;
+}
+
+.prod-desc {
+    color: rgb(129, 129, 129);
+}
+
+.prod-brand {
+    color: rgb(129, 129, 129);
+}
+
+.prod-price {
+    font-weight: bold;
+}
+
+.cart-btn {
+    width: 200px;
+}
+
+@media screen and (min-width: 800px) {
+    .prod-img {
+        object-fit: cover;
+        min-width: 500px;
+        min-height: 400px;
+    }
+}

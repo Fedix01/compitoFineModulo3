@@ -14,5 +14,29 @@ nav img {
 }
 
 .hero {
-    background-image: url(assets/e-commerce-bg.jpeg);
+    background-color: #F77F6C;
+}
+
+
+.overflow-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.overflow-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cover {
+    object-fit: contain;
+    object-position: center;
+    width: 300px;
+    height: 250px;
 }
