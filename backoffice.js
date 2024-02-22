@@ -9,7 +9,7 @@ const postImgUrl = document.getElementById("imageUrl");
 const postPrice = document.getElementById("price");
 
 const alertMsg = document.getElementById("alert-msg");
-
+const deleteMsg = document.getElementById("delete-msg");
 const postBtn = document.getElementById("post-btn");
 
 postBtn.addEventListener("click", () => {
@@ -47,7 +47,7 @@ function cycleRes(json) {
     })
 }
 
-function createTable({ name, description, brand, imageUrl, price }) {
+function createTable({ _id, name, description, brand, imageUrl, price }) {
     // Template tipo:
     // --------------
     // <tr>
@@ -102,6 +102,9 @@ function createTable({ name, description, brand, imageUrl, price }) {
     // Delete button
     let deleteBtn = document.createElement("a");
     deleteBtn.classList.add("btn", "btn-danger", "btn-sm", "ms-1");
+    deleteBtn.addEventListener("click", () => {
+        deleteItem(_id)
+    })
     let deleteIcon = document.createElement("i");
     deleteIcon.classList.add("fa-solid", "fa-trash");
     let deleteText = document.createElement("span");
@@ -147,5 +150,23 @@ async function createItem() {
         setTimeout(() => {
             alertMsg.classList.toggle("d-none");
         }, 5000)
+    }
+}
+
+async function deleteItem(id) {
+    try {
+        const res = await fetch(endpoint + id, {
+            method: "DELETE",
+            headers: {
+                "Authorization": authorizationAccess
+            }
+        })
+        deleteMsg.classList.toggle("d-none");
+        setTimeout(() => {
+            deleteMsg.classList.toggle("d-none");
+        }, 5000)
+        getFromApi();
+    } catch (error) {
+        console.log(error)
     }
 }
