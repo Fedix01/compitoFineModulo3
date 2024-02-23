@@ -7,12 +7,27 @@ const postBrand = document.getElementById("brand");
 const postImgUrl = document.getElementById("imageUrl");
 const postPrice = document.getElementById("price");
 
+const back = document.getElementById("backOffice");
+
 const alertMsg = document.getElementById("alert-msg");
 
+const successMsg = document.getElementById("success-msg");
+
+const postBtn = document.getElementById("post-btn");
 
 const endpoint = "https://striveschool-api.herokuapp.com/api/product/";
 const authorizationAccess = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWQ0ZDE0NzljNDM3MDAwMTkzYzM2ODIiLCJpYXQiOjE3MDg0NDYwMjMsImV4cCI6MTcwOTY1NTYyM30.QXvSO6Pxvxz3wzHGST5TFpR34SP4PlsEiZKbU6EHrso";
 
+
+back.addEventListener("click", () => {
+    window.location.href = "backoffice.html"
+})
+
+postBtn.addEventListener("click", () => {
+    edit()
+})
+
+window.onload = show();
 
 async function show() {
     try {
@@ -30,5 +45,34 @@ async function show() {
         postPrice.value = json.price
     } catch (error) {
         console.log(error)
+    }
+}
+
+async function edit() {
+    if (postName.value && postDesc.value && postBrand.value && postImgUrl.value && postPrice.value) {
+        try {
+            const myPayload = { "name": postName.value, "description": postDesc.value, "brand": postBrand.value, "imageUrl": postImgUrl.value, "price": postPrice.value };
+            const res = await fetch(endpoint + myPid, {
+                method: "PUT",
+                body: JSON.stringify(myPayload),
+                headers: {
+                    "Authorization": authorizationAccess,
+                    "Content-Type": "application/json"
+                }
+            })
+            successMsg.classList.toggle("d-none");
+            setTimeout(() => {
+                successMsg.classList.toggle("d-none")
+            }, 5000);
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+    else {
+        alertMsg.classList.toggle("d-none");
+        setTimeout(() => {
+            alertMsg.classList.toggle("d-none")
+        }, 5000);
     }
 }

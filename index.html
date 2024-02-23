@@ -37,7 +37,7 @@
                         <i class="fa-solid fa-user"></i>
                         <span class="mx-2">Sign in / Register</span>
                     </div>
-                    <div class="mx-3">
+                    <div class="mx-3" id="addToCart">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span class="mx-2">Add To Cart</span>
                     </div>
@@ -71,8 +71,18 @@
             </div>
         </div>
     </div>
-
-    <div class="container">
+    <div id="cartPage" class="d-none">
+        <div class="container bg-white mt-3 d-flex">
+            <h2>Shopping Cart</h2>
+            <h3 id="total" class="ms-5"></h3>
+        </div>
+        <div id="cartBox">
+        </div>
+        <div class="container bg-white mt-3">
+            <button class="btn btn-danger" id="empty">Empty Cart</button>
+        </div>
+    </div>
+    <div class="container" id="prodPage">
         <div class="row">
             <div class="col-md-12 mt-4" id="all-prod">
                 <h2>All Products</h2>
@@ -85,6 +95,42 @@
             <span class="visually-hidden">Loading...</span>
         </div>
         <div class="row align-items-baseline" id="searched-prod"></div>
+    </div>
+
+    <div class="footer-dark mt-5">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#">Web design</a></li>
+                            <li><a href="#">Development</a></li>
+                            <li><a href="#">Hosting</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>Company Name</h3>
+                        <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula
+                            rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum
+                            vel in justo.</p>
+                    </div>
+                    <div class="col item social">
+                        <i class="fa-brands fa-facebook px-2"></i>
+                        <i class="fa-brands fa-instagram px-2"></i>
+                        <i class="fa-brands fa-twitter px-2"></i>
+                    </div>
+                    <p class="copyright">Company Name © 2018</p>
+                </div>
+        </footer>
     </div>
     <script src="https://kit.fontawesome.com/e5a2b2fa25.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

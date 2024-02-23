@@ -4,8 +4,18 @@ const backOffice = document.getElementById("backOffice");
 
 let spinner = document.getElementById("spinner");
 
-const homePage = document.querySelectorAll(".home")
+const homePage = document.querySelectorAll(".home");
 
+let activeItem;
+
+const addToCartBtn = document.getElementById("addToCart");
+const cartBox = document.getElementById("cartBox");
+const prodPage = document.getElementById("prodPage");
+let counter = 1;
+const cartPage = document.getElementById("cartPage");
+const totalOrders = document.getElementById("total");
+
+const emptyBtn = document.getElementById("empty");
 
 const searchInput = document.getElementById("search-input");
 const searchBtn = document.getElementById("search-btn");
@@ -13,6 +23,14 @@ const searchedText = document.getElementById("searched-text");
 const allProdText = document.getElementById("all-prod");
 const endpoint = "https://striveschool-api.herokuapp.com/api/product/";
 const authorizationAccess = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWQ0ZDE0NzljNDM3MDAwMTkzYzM2ODIiLCJpYXQiOjE3MDg0NDYwMjMsImV4cCI6MTcwOTY1NTYyM30.QXvSO6Pxvxz3wzHGST5TFpR34SP4PlsEiZKbU6EHrso";
+
+emptyBtn.addEventListener("click", () => {
+    empty()
+})
+
+addToCartBtn.addEventListener("click", () => {
+    cart()
+})
 
 homePage.forEach((element) => {
     element.addEventListener("click", () => {
@@ -115,6 +133,11 @@ function createCards({ name, description, brand, imageUrl, price, _id }) {
 
     let cartBtn = document.createElement("a");
     cartBtn.classList.add("btn", "btn-warning");
+    cartBtn.addEventListener("click", () => {
+        addCart(imageUrl, name, brand, price, _id, cardCont);
+        cardCont.classList.add("selected-item")
+        cardCont.id = _id;
+    })
 
     let cartIcon = document.createElement("i");
     cartIcon.classList.add("fa-solid", "fa-cart-shopping", "me-3");
@@ -141,4 +164,68 @@ function createCards({ name, description, brand, imageUrl, price, _id }) {
 function details(id) {
     let detailsPage = "details.html";
     window.location.href = `${detailsPage}?id=${id}`;
+}
+
+function cart() {
+    cartPage.classList.toggle("d-none");
+    prodPage.classList.toggle("d-none");
+}
+
+function addCart(img, name, brand, price, id, cardCont) {
+    let prodCont = document.createElement("div");
+    prodCont.classList.add("d-flex", "container", "align-items-center", "my-3");
+    prodCont.style.backgroundColor = "white";
+
+    let prodImg = document.createElement("img");
+    prodImg.src = img;
+    prodImg.style.width = "100px";
+    prodImg.classList.add("mx-3");
+
+    let prodName = document.createElement("h4");
+    prodName.innerText = name;
+    prodName.classList.add("mx-3");
+
+
+    let prodBrand = document.createElement("h4");
+    prodBrand.innerText = brand;
+    prodBrand.classList.add("mx-3");
+
+
+    let prodPrice = document.createElement("h3");
+    prodPrice.innerText = price;
+    prodPrice.classList.add("mx-3");
+
+    let deleteProd = document.createElement("i");
+    deleteProd.classList.add("fa-solid", "fa-x", "ms-5");
+    deleteProd.addEventListener("click", () => {
+        deleteItem(id, prodCont, cardCont)
+    })
+
+    totalOrders.innerText = `Total items:${counter}`;
+
+    prodCont.appendChild(prodImg);
+    prodCont.appendChild(prodName);
+    prodCont.appendChild(prodBrand);
+    prodCont.appendChild(prodPrice);
+    prodCont.appendChild(deleteProd);
+
+    cartBox.appendChild(prodCont);
+
+    counter++;
+}
+
+function deleteItem(id, prodCont, cardCont) {
+    let selectedCart = document.getElementById(cardCont.id);
+    console.log(selectedCart);
+    selectedCart.classList.remove("selected-item");
+    counter--;
+    prodCont.remove();
+}
+
+function empty() {
+    cartBox.innerHTML = "";
+    let selectedItems = document.querySelectorAll(".selected-item");
+    selectedItems.forEach((element) => {
+        element.classList.remove("selected-item")
+    })
 }

@@ -85,9 +85,13 @@ function createTable({ _id, name, description, brand, imageUrl, price }) {
     rowPrice.innerText = `$${price}`;
 
     let rowBtns = document.createElement("td");
+
+
     // Edit(modify) button
     let editBtn = document.createElement("a");
     editBtn.classList.add("btn", "btn-primary", "btn-sm");
+    editBtn.href = `edit.html?pid=${_id}`;
+    editBtn.target = "_self";
     let editIcon = document.createElement("i");
     editIcon.classList.add("fa-solid", "fa-pencil");
     let editText = document.createElement("span");
