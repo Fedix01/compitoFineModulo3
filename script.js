@@ -11,9 +11,14 @@ let activeItem;
 const addToCartBtn = document.getElementById("addToCart");
 const cartBox = document.getElementById("cartBox");
 const prodPage = document.getElementById("prodPage");
-let counter = 1;
+let counter = 0;
 const cartPage = document.getElementById("cartPage");
 const totalOrders = document.getElementById("total");
+
+let totalPriceCart = document.getElementById("totalPriceCart");
+let totalPrices = 0;
+
+let numbItems = document.getElementById("numb-items");
 
 const emptyBtn = document.getElementById("empty");
 
@@ -192,16 +197,16 @@ function addCart(img, name, brand, price, id, cardCont) {
 
 
     let prodPrice = document.createElement("h3");
-    prodPrice.innerText = price;
+    prodPrice.innerText = `$${price}`;
     prodPrice.classList.add("mx-3");
 
     let deleteProd = document.createElement("i");
     deleteProd.classList.add("fa-solid", "fa-x", "ms-5");
+    deleteProd.style.cursor = "pointer";
     deleteProd.addEventListener("click", () => {
-        deleteItem(id, prodCont, cardCont)
+        deleteItem(price, prodCont, cardCont)
     })
 
-    totalOrders.innerText = `Total items:${counter}`;
 
     prodCont.appendChild(prodImg);
     prodCont.appendChild(prodName);
@@ -212,14 +217,27 @@ function addCart(img, name, brand, price, id, cardCont) {
     cartBox.appendChild(prodCont);
 
     counter++;
+    totalOrders.innerText = `Total items:${counter}`;
+    numbItems.classList.remove("d-none");
+    numbItems.innerText = counter;
+
+    totalPrices += price;
+    totalPriceCart.innerText = `Total price is:$${totalPrices}`;
 }
 
-function deleteItem(id, prodCont, cardCont) {
+function deleteItem(price, prodCont, cardCont) {
     let selectedCart = document.getElementById(cardCont.id);
     console.log(selectedCart);
     selectedCart.classList.remove("selected-item");
     counter--;
+    totalOrders.innerText = `Total items:${counter}`;
+    numbItems.innerText = counter;
     prodCont.remove();
+    if (counter === 0) {
+        numbItems.classList.add("d-none")
+    }
+    totalPrices = totalPrices - price;
+    totalPriceCart.innerText = `Total price is:$${totalPrices}`;
 }
 
 function empty() {
@@ -228,4 +246,9 @@ function empty() {
     selectedItems.forEach((element) => {
         element.classList.remove("selected-item")
     })
+    counter = 0;
+    totalPrices = 0;
+    totalPriceCart.innerText = `Total price is:$${totalPrices}`;
+    totalOrders.innerText = `Total items:${counter}`;
+    numbItems.classList.add("d-none");
 }

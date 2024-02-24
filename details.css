@@ -38,7 +38,7 @@ nav img {
 @media screen and (min-width: 800px) {
     .prod-img {
         object-fit: cover;
-        min-width: 500px;
+        min-width: 400px;
         min-height: 400px;
     }
 }

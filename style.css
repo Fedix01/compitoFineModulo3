@@ -41,8 +41,19 @@ nav img {
     height: 250px;
 }
 
-#cartBox {
-    background-color: lightgray;
+#totalPriceCart {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#addToCart {
+    cursor: pointer;
+}
+
+#numb-items {
+    background-color: #F77F6C;
+    border-radius: 50%;
+    padding: 5px;
 }
 
 .selected-item {

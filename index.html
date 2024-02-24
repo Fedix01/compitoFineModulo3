@@ -40,6 +40,7 @@
                     <div class="mx-3" id="addToCart">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span class="mx-2">Add To Cart</span>
+                        <span class="ms-2 d-none" id="numb-items"></span>
                     </div>
                 </div>
             </div>
@@ -58,7 +59,7 @@
                 <div class="col-lg-6">
                     <h1 class="display-5 fw-bold lh-1 mb-3">All your favourite brands in one place</h1>
                     <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the
-                        world’s
+                        world s
                         most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid
                         system, extensive prebuilt components, and powerful JavaScript plugins.</p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
@@ -72,14 +73,15 @@
         </div>
     </div>
     <div id="cartPage" class="d-none">
-        <div class="container bg-white mt-3 d-flex">
+        <div class="container bg-white mt-3 d-flex align-items-center">
             <h2>Shopping Cart</h2>
             <h3 id="total" class="ms-5"></h3>
         </div>
         <div id="cartBox">
         </div>
-        <div class="container bg-white mt-3">
+        <div class="container bg-white mt-3 d-flex align-items-center">
             <button class="btn btn-danger" id="empty">Empty Cart</button>
+            <span class="ms-3" id="totalPriceCart"></span>
         </div>
     </div>
     <div class="container" id="prodPage">

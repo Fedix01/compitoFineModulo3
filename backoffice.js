@@ -10,6 +10,7 @@ const postPrice = document.getElementById("price");
 
 const alertMsg = document.getElementById("alert-msg");
 const deleteMsg = document.getElementById("delete-msg");
+const postMsg = document.getElementById("post-msg");
 const postBtn = document.getElementById("post-btn");
 
 postBtn.addEventListener("click", () => {
@@ -146,6 +147,10 @@ async function createItem() {
             postBrand.value = "";
             postImgUrl.value = "";
             postPrice.value = "";
+            postMsg.classList.toggle("d-none");
+            setTimeout(() => {
+                postMsg.classList.toggle("d-none");
+            }, 5000)
         } catch (error) {
             console.log(error)
         }
