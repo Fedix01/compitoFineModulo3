@@ -9,6 +9,8 @@ const postPrice = document.getElementById("price");
 
 const back = document.getElementById("backOffice");
 
+const backHomePage = document.querySelectorAll(".homePage");
+
 const alertMsg = document.getElementById("alert-msg");
 
 const successMsg = document.getElementById("success-msg");
@@ -18,6 +20,11 @@ const postBtn = document.getElementById("post-btn");
 const endpoint = "https://striveschool-api.herokuapp.com/api/product/";
 const authorizationAccess = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWQ0ZDE0NzljNDM3MDAwMTkzYzM2ODIiLCJpYXQiOjE3MDg0NDYwMjMsImV4cCI6MTcwOTY1NTYyM30.QXvSO6Pxvxz3wzHGST5TFpR34SP4PlsEiZKbU6EHrso";
 
+backHomePage.forEach((element) => {
+    element.addEventListener("click", () => {
+        window.location.href = "index.html"
+    })
+})
 
 back.addEventListener("click", () => {
     window.location.href = "backoffice.html"

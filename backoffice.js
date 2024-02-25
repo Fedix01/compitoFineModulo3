@@ -74,7 +74,7 @@ function createTable({ _id, name, description, brand, imageUrl, price }) {
     rowName.innerText = name;
     let rowDesc = document.createElement("td");
     rowDesc.innerText = description;
-    rowDesc.style.maxWidth = "500px";
+    rowDesc.style.maxWidth = "400px";
     let rowBrand = document.createElement("td");
     rowBrand.innerText = brand;
     let rowImg = document.createElement("td");
