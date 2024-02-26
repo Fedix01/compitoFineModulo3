@@ -13,8 +13,16 @@ const deleteMsg = document.getElementById("delete-msg");
 const postMsg = document.getElementById("post-msg");
 const postBtn = document.getElementById("post-btn");
 
+let mySelect = document.getElementById("mySelect");
+let myInput = document.getElementById("myInput");
+const btnSearch = document.getElementById("btnSearch");
+
 postBtn.addEventListener("click", () => {
     createItem()
+})
+
+btnSearch.addEventListener("click", () => {
+    getFromApi()
 })
 
 const endpoint = "https://striveschool-api.herokuapp.com/api/product/";
@@ -35,8 +43,8 @@ async function getFromApi() {
             }
         });
         const json = await res.json();
-        console.log(json)
-        cycleRes(json)
+        console.log(json);
+        filterTable(json);
     } catch (error) {
         console.log(error)
     }
@@ -72,6 +80,7 @@ function createTable({ _id, name, description, brand, imageUrl, price }) {
 
     let rowName = document.createElement("th");
     rowName.innerText = name;
+    rowName.style.width = "250px";
     let rowDesc = document.createElement("td");
     rowDesc.innerText = description;
     rowDesc.style.maxWidth = "400px";
@@ -177,5 +186,18 @@ async function deleteItem(id) {
         getFromApi();
     } catch (error) {
         console.log(error)
+    }
+}
+
+function filterTable(json) {
+    let selectValue = mySelect.value;
+    let inputValue = myInput.value;
+    if (selectValue && inputValue) {
+        let filteredItem = json.filter((element) => {
+            return element[selectValue].toLowerCase().includes(inputValue.toLowerCase().trim())
+        })
+        cycleRes(filteredItem)
+    } else {
+        cycleRes(json)
     }
 }

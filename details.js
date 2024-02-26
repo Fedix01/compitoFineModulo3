@@ -66,9 +66,9 @@ function createHtml({ name, description, brand, imageUrl, price }) {
     addCartBtn.classList.add("btn", "btn-warning", "cart-btn");
 
     let iconBtn = document.createElement("i");
-    iconBtn.classList.add("fa-solid", "fa-cart-shopping", "me-3");
+    iconBtn.classList.add("fa-solid", "fa-star", "me-3");
     let textBtn = document.createElement("span");
-    textBtn.innerText = "Add to Cart";
+    textBtn.innerText = "Add to favourite";
 
     addCartBtn.appendChild(iconBtn);
     addCartBtn.appendChild(textBtn);
