@@ -27,7 +27,7 @@ const searchBtn = document.getElementById("search-btn");
 const searchedText = document.getElementById("searched-text");
 const allProdText = document.getElementById("all-prod");
 const endpoint = "https://striveschool-api.herokuapp.com/api/product/";
-const authorizationAccess = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWQ0ZDE0NzljNDM3MDAwMTkzYzM2ODIiLCJpYXQiOjE3MDg0NDYwMjMsImV4cCI6MTcwOTY1NTYyM30.QXvSO6Pxvxz3wzHGST5TFpR34SP4PlsEiZKbU6EHrso";
+const authorizationAccess = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWQ0ZDE0NzljNDM3MDAwMTkzYzM2ODIiLCJpYXQiOjE3MTg2MzY4NDMsImV4cCI6MTcxOTg0NjQ0M30.yTeolmiSqrq-pmJksX520SxMCStIRMF2BHkKi3HRTXg";
 
 emptyBtn.addEventListener("click", () => {
     empty()
